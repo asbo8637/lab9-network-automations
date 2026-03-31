@@ -1,7 +1,7 @@
+
 import unittest
 import pandas as pd
-from netmiko import ConnectHandler
-import time
+from ncclient import manager
 
 class TestNetmanNetconf(unittest.TestCase):
     @classmethod
@@ -19,15 +19,16 @@ class TestNetmanNetconf(unittest.TestCase):
         return device
 
     def test_loopback_r3(self):
-        device = self.get_device('R3')
-        with ConnectHandler(**device) as net_connect:
-            net_connect.enable()
-            output = net_connect.send_command('show ip interface brief | include Loopback99')
-            found = False
-            for line in output.splitlines():
-                if 'Loopback99' in line and '10.1.3.1' in line:
-                    found = True
-            self.assertTrue(found, f"Loopback99 with IP 10.1.3.1 not found on R3. Output: {output}")
+        row = self.info[self.info['Router'] == 'R3']
+        ip = row['Mgmt IP'].values[0]
+        user = row['Username'].values[0]
+        pwd = row['Password'].values[0]
+        with manager.connect(host=ip, port=830, username=user, password=pwd, hostkey_verify=False, allow_agent=False, look_for_keys=False) as m:
+            filter_xml = '''<filter><interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"/></filter>'''
+            reply = m.get(filter_xml)
+            xml_str = str(reply.xml)
+            self.assertIn('Loopback99', xml_str)
+            self.assertIn('10.1.3.1', xml_str)
 
     def test_single_area_r1(self):
         device = self.get_device('R1')
