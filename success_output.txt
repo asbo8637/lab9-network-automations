@@ -1,0 +1,195 @@
+Started by GitHub push by asbo8637
+Lightweight checkout support not available, falling back to full checkout.
+Checking out git https://github.com/asbo8637/lab9-network-automations into /var/lib/jenkins/workspace/lab9-pipe@script/246b1a0c16cdbea6a5289ed902a586a6c0590ec5bb2c86301ab4d374cc9683ab to read Jenkinsfile
+The recommended git tool is: NONE
+using credential cbcf98e0-59b9-4dd9-b518-32fe10e074b6
+ > /usr/bin/git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/lab9-pipe@script/246b1a0c16cdbea6a5289ed902a586a6c0590ec5bb2c86301ab4d374cc9683ab/.git # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/asbo8637/lab9-network-automations # timeout=10
+Fetching upstream changes from https://github.com/asbo8637/lab9-network-automations
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+using GIT_ASKPASS to set credentials
+ > /usr/bin/git fetch --tags --force --progress -- https://github.com/asbo8637/lab9-network-automations +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > /usr/bin/git show-ref --tags -d # timeout=10
+Checking out Revision d8a8c853b82d3f61f8b7e83b0ce2cc1923b3cd17 (origin/main)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f d8a8c853b82d3f61f8b7e83b0ce2cc1923b3cd17 # timeout=10
+Commit message: "test"
+ > /usr/bin/git rev-list --no-walk 204387edfe4e604aef323e26379fb6d4f65a9ae6 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/lib/jenkins/workspace/lab9-pipe
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential cbcf98e0-59b9-4dd9-b518-32fe10e074b6
+ > /usr/bin/git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/lab9-pipe/.git # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/asbo8637/lab9-network-automations # timeout=10
+Fetching upstream changes from https://github.com/asbo8637/lab9-network-automations
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+using GIT_ASKPASS to set credentials
+ > /usr/bin/git fetch --tags --force --progress -- https://github.com/asbo8637/lab9-network-automations +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > /usr/bin/git show-ref --tags -d # timeout=10
+Checking out Revision d8a8c853b82d3f61f8b7e83b0ce2cc1923b3cd17 (origin/main)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f d8a8c853b82d3f61f8b7e83b0ce2cc1923b3cd17 # timeout=10
+Commit message: "test"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Update/Install packages in the NetMan)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ python3 -m pip install --upgrade ncclient
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: ncclient in /var/lib/jenkins/.local/lib/python3.10/site-packages (0.7.1)
+Requirement already satisfied: paramiko>=3.2.0 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from ncclient) (4.0.0)
+Requirement already satisfied: lxml>=3.3.0 in /usr/lib/python3/dist-packages (from ncclient) (4.8.0)
+Requirement already satisfied: cryptography>=3.3 in /usr/lib/python3/dist-packages (from paramiko>=3.2.0->ncclient) (3.4.8)
+Requirement already satisfied: bcrypt>=3.2 in /usr/lib/python3/dist-packages (from paramiko>=3.2.0->ncclient) (3.2.0)
+Requirement already satisfied: pynacl>=1.5 in /usr/lib/python3/dist-packages (from paramiko>=3.2.0->ncclient) (1.5.0)
+Requirement already satisfied: invoke>=2.0 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from paramiko>=3.2.0->ncclient) (2.2.1)
+Requirement already satisfied: cffi>=1.4.1 in /usr/local/lib/python3.10/dist-packages (from pynacl>=1.5->paramiko>=3.2.0->ncclient) (1.15.1)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi>=1.4.1->pynacl>=1.5->paramiko>=3.2.0->ncclient) (2.21)
+[Pipeline] sh
++ python3 -m pip install --upgrade pandas
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas in /var/lib/jenkins/.local/lib/python3.10/site-packages (2.3.3)
+Requirement already satisfied: pytz>=2020.1 in /usr/lib/python3/dist-packages (from pandas) (2022.1)
+Requirement already satisfied: tzdata>=2022.7 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pandas) (2025.3)
+Requirement already satisfied: python-dateutil>=2.8.2 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: numpy>=1.22.4 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pandas) (2.2.6)
+Requirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.8.2->pandas) (1.16.0)
+[Pipeline] sh
++ python3 -m pip install --upgrade ipaddress
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: ipaddress in /var/lib/jenkins/.local/lib/python3.10/site-packages (1.0.23)
+[Pipeline] sh
++ python3 -m pip install --upgrade netaddr
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: netaddr in /var/lib/jenkins/.local/lib/python3.10/site-packages (1.3.0)
+[Pipeline] sh
++ python3 -m pip install --upgrade prettytable
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: prettytable in /var/lib/jenkins/.local/lib/python3.10/site-packages (3.17.0)
+Requirement already satisfied: wcwidth in /usr/lib/python3/dist-packages (from prettytable) (0.2.5)
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Check netconf with pylint)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ python3 -m pip install pylint
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pylint in /var/lib/jenkins/.local/lib/python3.10/site-packages (4.0.5)
+Requirement already satisfied: tomlkit>=0.10.1 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pylint) (0.14.0)
+Requirement already satisfied: astroid<=4.1.dev0,>=4.0.2 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pylint) (4.0.4)
+Requirement already satisfied: dill>=0.2 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pylint) (0.4.1)
+Requirement already satisfied: platformdirs>=2.2 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pylint) (4.9.4)
+Requirement already satisfied: isort!=5.13,<9,>=5 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pylint) (8.0.1)
+Requirement already satisfied: tomli>=1.1 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pylint) (2.4.1)
+Requirement already satisfied: mccabe<0.8,>=0.6 in /var/lib/jenkins/.local/lib/python3.10/site-packages (from pylint) (0.7.0)
+Requirement already satisfied: typing-extensions>=4 in /usr/local/lib/python3.10/dist-packages (from astroid<=4.1.dev0,>=4.0.2->pylint) (4.5.0)
+[Pipeline] sh
++ /var/lib/jenkins/.local/bin/pylint --fail-under=5 netman_netconf_obj2.py
+************* Module netman_netconf_obj2
+netman_netconf_obj2.py:15:0: C0301: Line too long (106/100) (line-too-long)
+netman_netconf_obj2.py:106:0: C0304: Final newline missing (missing-final-newline)
+netman_netconf_obj2.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+netman_netconf_obj2.py:10:7: W0718: Catching too general exception Exception (broad-exception-caught)
+netman_netconf_obj2.py:12:4: E0601: Using variable 'sys' before assignment (used-before-assignment)
+netman_netconf_obj2.py:16:4: C0103: Constant name "file" doesn't conform to UPPER_CASE naming style (invalid-name)
+netman_netconf_obj2.py:18:14: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+netman_netconf_obj2.py:21:14: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+netman_netconf_obj2.py:36:4: C0103: Constant name "cfg" doesn't conform to UPPER_CASE naming style (invalid-name)
+netman_netconf_obj2.py:58:14: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+netman_netconf_obj2.py:81:14: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
+
+------------------------------------------------------------------
+Your code has been rated at 7.58/10 (previous run: 7.58/10, +0.00)
+
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run netman_netconf)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ python3 netman_netconf_obj2.py
+Logging into router R1 and sending configurations
+Logging into router R2 and sending configurations
+Logging into router R3 and sending configurations
+Logging into router R4 and sending configurations
+Logging into router R5 and sending configurations
+
+------------------Configs to all routers is sent------------------
+
+Pulling information from router R1 to display
+Pulling information from router R2 to display
+Pulling information from router R3 to display
+Pulling information from router R4 to display
+Pulling information from router R5 to display
+
+------------------Displaying the fetched information------------------
+
++--------+----------+----------------+-----------+------------------------------------+
+| Router | Hostname | Loopback 99 IP | OSPF area |      Advertised OSPF Networks      |
++--------+----------+----------------+-----------+------------------------------------+
+|   R1   |    R1    |  10.1.1.1/24   |     0     | ('10.1.1.0/24', '198.51.100.0/24') |
+|   R2   |    R2    |  10.1.2.1/24   |     0     | ('10.1.2.0/24', '198.51.100.0/24') |
+|   R3   |    R3    |  10.1.3.1/24   |     0     | ('10.1.3.0/24', '198.51.100.0/24') |
+|   R4   |    R4    |  10.1.4.1/24   |     0     | ('10.1.4.0/24', '198.51.100.0/24') |
+|   R5   |    R5    |  10.1.5.1/24   |     0     | ('10.1.5.0/24', '198.51.100.0/24') |
++--------+----------+----------------+-----------+------------------------------------+
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Unit Tests)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ python3 -m unittest test_netman_netconf_obj2.py
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] mail
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
