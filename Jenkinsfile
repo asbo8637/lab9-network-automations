@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	environment {
-		EMAIL = 'asbo8637@colorado.edu'
+		EMAIL = 'assafboneh2@gmail.com'
 		PYTHON = 'python3'
 	}
 	stages {
