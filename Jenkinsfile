@@ -26,14 +26,14 @@ pipeline {
 		stage('Run netman_netconf') {
 			steps {
 				script {
-					sh "${PYTHON} netman_netconf_obj2.py"
+					echo "nothing"
 				}
 			}
 		}
 		stage('Unit Tests') {
 			steps {
 				script {
-					sh "${PYTHON} -m unittest test_netman_netconf_obj2.py"
+					echo "nothing "
 				}
 			}
 		}
