@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	environment {
 		EMAIL = 'asbo8637@colorado.edu'
-		PYTHON = 'python'
+		PYTHON = 'python3'
 	}
 	stages {
 		stage('Update/Install packages in the NetMan') {
