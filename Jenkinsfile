@@ -19,7 +19,7 @@ pipeline {
 			steps {
 				script {
 					sh "${PYTHON} -m pip install pylint"
-					sh "pylint --fail-under=5 netman_netconf_obj2.py"
+					sh "/var/lib/jenkins/.local/bin/pylint --fail-under=5 netman_netconf_obj2.py"
 				}
 			}
 		}
